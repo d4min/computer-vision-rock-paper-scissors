@@ -38,3 +38,23 @@ conda install tensorflow opencv ipykernel
 ```bash
 conda list --explicit > requirements.txt
 ```
+
+## Milestone 4
+
+- Wrote the script manual_rps.py which is a manual version of the intended program which takes in a user choice through text and then picks the computer choice randomly from a list of choices. 
+
+- Defined functions for taking the user choice as well as choosing the computer choice. 
+
+```python
+def get_computer_choice():
+    rps  = ['Rock', 'Paper', 'Scissors']
+    return random.choice(rps)
+```
+This uses the random library to pick a random item from the rps list and then returns the computer choice. 
+
+```python
+def get_user_choice():
+    user_choice = input('Please enter rock, paper or scissors')
+    return user_choice.capitalize()
+```
+Gets user input through a prompt, returns the input capitalised to ensure it is the right format for the rest of the script. 
