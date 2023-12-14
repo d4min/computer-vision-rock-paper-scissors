@@ -72,3 +72,15 @@ def get_winner(computer_choice, user_choice):
         ...
 ```
 The above code shows a slice of the entire function which determines the winner. The function returns the winner of the game. 
+
+- Defined a function which incorporates the logic of the game and allows the user to play the game. 
+
+```python
+def play():
+
+    computer_choice = get_computer_choice()
+    user_choice = get_user_choice()
+
+    get_winner(computer_choice, user_choice)
+```
+The function runs the choice functions to obtain both the computers choice and the users choice, then calls the get_winner function with both as arguments.
