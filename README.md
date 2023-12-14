@@ -58,3 +58,17 @@ def get_user_choice():
     return user_choice.capitalize()
 ```
 Gets user input through a prompt, returns the input capitalised to ensure it is the right format for the rest of the script. 
+
+- Used if else statements to determine the winner of the game by comparing the computer choice to the user choice. 
+
+```python
+def get_winner(computer_choice, user_choice):
+    winner = ''
+    if computer_choice == user_choice:
+        print('It is a tie!')
+        winner = 'Tie'
+        ...
+        ...
+        ...
+```
+The above code shows a slice of the entire function which determines the winner. The function returns the winner of the game. 
