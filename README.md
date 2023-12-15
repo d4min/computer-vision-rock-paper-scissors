@@ -84,3 +84,80 @@ def play():
     get_winner(computer_choice, user_choice)
 ```
 The function runs the choice functions to obtain both the computers choice and the users choice, then calls the get_winner function with both as arguments.
+
+## Milestone 5
+
+- Combined both the manual_rps.py and RPS-Template.py scripts into one to allow the code to use the prediction returned from the deep learning model as the user input instead of the manual input. 
+
+```python
+def get_prediction():
+    ...
+    ...
+    prediction = model.predict(data)
+    ...
+    rps = ["Rock", "Paper", "Scissors", "Nothing"]
+    rps_prediction = 
+    rps[prediction[0].tolist().index(max(prediction[0]))]
+    ...
+    ...
+```
+The prediction returned from the model is in the form of a nested numpy array which includes the predictions in float value of each possbile label. 
+
+```python
+prediction = [[0.8, 0.1, 0.04, 0.06]]
+
+# The model predicts that the likelihood of the input being Rock is 80%, Paper is 10%, Scissors is 4% and Nothing is 6%
+```
+So in this example the most likely label is Rock. 
+
+I used this numpy array to get the index of the max value from the inner list and got the corresponding value from the rps list. 
+
+- Added a countdown where the model would be evaluating images from the webcam for three seconds and then would return the probabilities from the last image captured. I did this using the time() method from the time library in python.
+
+```python
+start_time = time.time()
+ while (time.time() - start_time) < 3:
+    ...
+    ...
+    ...
+```
+- Used recursion to rerun the program if the predicted value received from the model was nothing. This is because nothing is not a valid input to be used in the game. 
+
+```python
+if rps_prediction == "Nothing":
+            print("You haven't picked an option please gesture Rock, Paper or Scissors")
+            get_prediction(self)
+        else:
+            print(f"You have chosen {rps_prediction}!")
+            return rps_prediction
+```
+- Added to the play() function to allow the game to run until one of the players got to 3 wins or until 5 rounds were played. 
+
+```python
+computer_wins = 0
+user_wins =  0
+rounds_played = 0
+while computer_wins < 3 and user_wins < 3 and rounds_played < 5:
+    ...
+    ...
+    ...
+```
+The rounds played is incremented with each round and the win counts are incremented depending on who wins. 
+
+- Used good OOP practices to define the computer_vision_rps class. Included the functions used to play the game as methods.
+
+```python
+class computer_vision_rps:
+
+    def get_computer_choice(self):
+        ...
+    
+    def get_prediction(self):
+        ...
+
+    def get_winner(self, computer_choice, user_choice):
+        ...
+
+def play():
+    ...
+```
